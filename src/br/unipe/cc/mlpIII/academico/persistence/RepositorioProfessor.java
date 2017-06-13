@@ -11,6 +11,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import br.unipe.cc.mlpIII.academico.model.Professor;
 
 public class RepositorioProfessor implements IProfessor{
@@ -28,7 +30,7 @@ public class RepositorioProfessor implements IProfessor{
 			
 			conn = DriverManager.getConnection(url, login, senha);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return conn;
 	}
@@ -42,7 +44,7 @@ public class RepositorioProfessor implements IProfessor{
 			if (rs != null)
 				rs.close();
 		}catch(SQLException e){
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}
 	
@@ -60,9 +62,9 @@ public class RepositorioProfessor implements IProfessor{
 			}
 			close();
 		}catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return id;
 	}
@@ -93,7 +95,7 @@ public class RepositorioProfessor implements IProfessor{
 		}catch (ClassNotFoundException e) {
 			throw new EntidadeJaCadastradaException("Professor já cadastrado");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return resultado;
 	}
@@ -147,7 +149,7 @@ public class RepositorioProfessor implements IProfessor{
 			}
 			close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (ClassNotFoundException e){
 			throw new EntidadeNaoEncontradaException("Professor não encontrado");
 		}
@@ -174,9 +176,9 @@ public class RepositorioProfessor implements IProfessor{
 			}
 			close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (ClassNotFoundException e){
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		
 		return professores;
@@ -215,9 +217,9 @@ public class RepositorioProfessor implements IProfessor{
 			}
 			close();
 		}catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return resultado;
 	}
@@ -251,9 +253,9 @@ public class RepositorioProfessor implements IProfessor{
 			
 			close();
 		}catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return resultado;
 	}
@@ -337,10 +339,10 @@ public class RepositorioProfessor implements IProfessor{
 		}catch(IOException e){
 			throw new RelatorioException("Erro na geração de Relatório");
 		}catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 			return false;
 		}catch(ClassNotFoundException e){
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 			return false;
 		}
 	}
@@ -423,10 +425,10 @@ public class RepositorioProfessor implements IProfessor{
 		}catch(IOException e){
 			throw new RelatorioException("Erro na geração de Relatório");
 		}catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 			return false;
 		}catch(ClassNotFoundException e){
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 			return false;
 		}
 	}

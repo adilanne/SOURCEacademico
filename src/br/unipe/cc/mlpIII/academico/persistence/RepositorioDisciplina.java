@@ -11,6 +11,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import br.unipe.cc.mlpIII.academico.model.Disciplina;
 
 public class RepositorioDisciplina implements IDisciplina{
@@ -28,7 +30,7 @@ public class RepositorioDisciplina implements IDisciplina{
 			
 			conn = DriverManager.getConnection(url, login, senha);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return conn;
 	}
@@ -42,7 +44,7 @@ public class RepositorioDisciplina implements IDisciplina{
 			if (rs != null)
 				rs.close();
 		}catch(SQLException e){
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}
 
@@ -67,7 +69,7 @@ public class RepositorioDisciplina implements IDisciplina{
 		}catch (ClassNotFoundException e) {
 			throw new EntidadeJaCadastradaException("Disciplina já cadastrada");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return resultado;
 	}
@@ -92,7 +94,7 @@ public class RepositorioDisciplina implements IDisciplina{
 			}
 			close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (ClassNotFoundException e){
 			throw new EntidadeNaoEncontradaException("Disciplina não encontrada");
 		}
@@ -117,9 +119,9 @@ public class RepositorioDisciplina implements IDisciplina{
 			}
 			close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (ClassNotFoundException e){
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		
 		return disciplinas;
@@ -152,9 +154,9 @@ public class RepositorioDisciplina implements IDisciplina{
 			}
 			close();
 		}catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return resultado;
 	}
@@ -187,9 +189,9 @@ public class RepositorioDisciplina implements IDisciplina{
 			
 			close();
 		}catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return resultado;
 	}
@@ -234,10 +236,10 @@ public class RepositorioDisciplina implements IDisciplina{
 		}catch(IOException e){
 			throw new RelatorioException("Erro ao gerar Relatório");
 		}catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 			return false;
 		}catch(ClassNotFoundException e){
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 			return false;
 		}
 	}
@@ -282,10 +284,10 @@ public class RepositorioDisciplina implements IDisciplina{
 		}catch(IOException e){
 			throw new RelatorioException("Erro ao gerar Relatório");
 		}catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 			return false;
 		}catch(ClassNotFoundException e){
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 			return false;
 		}
 	}

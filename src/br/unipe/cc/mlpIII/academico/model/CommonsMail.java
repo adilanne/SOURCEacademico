@@ -21,7 +21,7 @@ public class CommonsMail {
 			
 			email.setHostName("smtp.gmail.com");
 			email.setSmtpPort(465);
-			email.setAuthenticator(new DefaultAuthenticator("email", "senha"));//email and password to send
+			email.setAuthenticator(new DefaultAuthenticator("sissource@gmail.com", "SOURCEsenha"));//email and password to send
 			email.setSSLOnConnect(true);
 			try{
 				email.addTo(emailAdress); 
@@ -29,7 +29,7 @@ public class CommonsMail {
 				throw new EmailInvalidoException("Email Inválido");
 			}
 			
-			email.setFrom("email", "SOURCE Sistema Acadêmico");//set the same mail above
+			email.setFrom("sissource@gmail.com", "SOURCE Sistema Acadêmico");//set the same mail above
 			email.setSubject("Relatório");
 			email.setMsg("Relatório gerado por SOURCE - Sistema Acadêmico.");
 			email.attach(anexo);

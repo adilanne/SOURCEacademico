@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
+
 import br.unipe.cc.mlpIII.academico.model.Aluno;
 
 public class RepositorioCursa implements ICursa{
@@ -23,7 +25,7 @@ public class RepositorioCursa implements ICursa{
 			
 			conn = DriverManager.getConnection(url, login, senha);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return conn;
 	}
@@ -37,7 +39,7 @@ public class RepositorioCursa implements ICursa{
 			if (rs != null)
 				rs.close();
 		}catch(SQLException e){
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}
 
@@ -81,9 +83,9 @@ public class RepositorioCursa implements ICursa{
 			}
 			close();
 		}catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return resultado;
 	}

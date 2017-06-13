@@ -11,6 +11,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import br.unipe.cc.mlpIII.academico.model.Aluno;
 
 /**
@@ -34,7 +36,7 @@ public class RepositorioAluno implements IAluno{
 			
 			conn = DriverManager.getConnection(url, login, senha);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return conn;
 	}
@@ -69,9 +71,9 @@ public class RepositorioAluno implements IAluno{
 			}
 			close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (ClassNotFoundException e){
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		
 		return alunos;
@@ -101,7 +103,7 @@ public class RepositorioAluno implements IAluno{
 		}catch (ClassNotFoundException e) {
 			throw new EntidadeJaCadastradaException("Aluno já Cadastrado");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return resultado;
 	}
@@ -138,9 +140,9 @@ public class RepositorioAluno implements IAluno{
 			}
 			close();
 		}catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return resultado;
 	}
@@ -168,13 +170,20 @@ public class RepositorioAluno implements IAluno{
 				if(linhas != 0){
 					resultado = true;
 				}
+			}else{
+				sql = "DELETE FROM aluno WHERE id LIKE " + id;
+				
+				linhas = stmt.executeUpdate(sql);
+				if(linhas != 0){
+					resultado = true;
+				}
 			}
-			
+
 			close();
 		}catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return resultado;
 	}
@@ -252,10 +261,10 @@ public class RepositorioAluno implements IAluno{
 		}catch(IOException e){
 			throw new RelatorioException("Erro na geração do Relatório");
 		}catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 			return false;
 		}catch(ClassNotFoundException e){
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 			return false;
 		}
 	}
@@ -335,10 +344,10 @@ public class RepositorioAluno implements IAluno{
 		}catch(IOException e){
 			throw new RelatorioException("Erro na geração do Relatório");
 		}catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 			return false;
 		}catch(ClassNotFoundException e){
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 			return false;
 		}
 	}
@@ -390,7 +399,7 @@ public class RepositorioAluno implements IAluno{
 			}
 			close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		} catch (ClassNotFoundException e){
 			throw new EntidadeNaoEncontradaException("Aluno não encontrado");
 		}
